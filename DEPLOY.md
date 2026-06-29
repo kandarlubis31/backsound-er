@@ -3,7 +3,7 @@
 ## Prasyarat
 - VPS dengan **Docker** & **Docker Compose** terinstall
 - **Node.js 20+** dan **pnpm** terinstall
-- Port **3000** terbuka (atau sesuaikan)
+- Port **9000** terbuka (atau sesuaikan)
 
 ---
 
@@ -42,13 +42,13 @@ cd ../..
 ```bash
 cd apps/web
 npx next build
-npx next start -p 3000
+npx next start -p 9000
 ```
 
 Atau pake **PM2** biar persistent:
 
 ```bash
-pm2 start npx --name backsounder -- next start -p 3000 --dir apps/web
+pm2 start npx --name backsounder -- next start -p 9000 --dir apps/web
 pm2 save
 ```
 
@@ -56,7 +56,7 @@ pm2 save
 
 ## 4. Scrape Data
 
-1. Buka browser → `http://<vps-ip>:3000`
+1. Buka browser → `http://<vps-ip>:9000`
 2. Klik tombol **"Scrape"** di navbar kanan atas
 3. Tunggu 1-5 menit (scrape 6 halaman myinstants.com)
 4. Refresh homepage — sounds langsung muncul!
@@ -95,7 +95,7 @@ backsound-er/
 | "Database connection refused" | `docker compose up -d` dulu, tunggu 5 detik |
 | "Scrape gagal" | Cek koneksi internet VPS, klik ulang tombol scrape |
 | "useSearchParams() should be wrapped..." | Udah difix ✅, gak bakal muncul |
-| Port 3000 gak bisa diakses | Cek firewall: `ufw allow 3000` |
+| Port 9000 gak bisa diakses | Cek firewall: `ufw allow 9000` |
 | React Query devtools error | Udah diremove ✅ |
 
 ---

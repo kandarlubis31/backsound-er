@@ -16,6 +16,29 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    networks:
+      - backsound-network
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: backsounder-web
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    environment:
+      DATABASE_URL: "postgresql://backsounder:backsounder@postgres:5432/backsounder"
+      NODE_ENV: production
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backsound-network
+
+networks:
+  backsound-network:
+    driver: bridge
 
 volumes:
   pgdata:

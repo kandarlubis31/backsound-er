@@ -407,7 +407,7 @@ npx prisma migrate dev
 
 # 6. Start dev
 pnpm dev
-# → http://localhost:3000
+# → http://localhost:9000
 ```
 
 ### Docker Compose
@@ -435,7 +435,7 @@ volumes:
 ```env
 # .env.example
 DATABASE_URL="postgresql://backsounder:backsounder@localhost:5432/backsounder"
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
+NEXT_PUBLIC_APP_URL="http://localhost:9000"
 ```
 
 ---
@@ -516,7 +516,7 @@ server {
         add_header Cache-Control "public, immutable";
     }
     location / {
-        proxy_pass http://localhost:3000;
+        proxy_pass http://localhost:9000;
         proxy_set_header Host $host;
     }
 }
