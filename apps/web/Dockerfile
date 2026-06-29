@@ -1,5 +1,5 @@
 # ---- Stage 1: Install dependencies ----
-FROM node:20-alpine AS deps
+FROM node:22-alpine AS deps
 RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY apps/web/package.json ./apps/web/package.json
 RUN pnpm install --frozen-lockfile
 
 # ---- Stage 2: Build ----
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 
@@ -28,7 +28,7 @@ COPY apps/web ./apps/web
 RUN cd apps/web && npx prisma generate && npx next build
 
 # ---- Stage 3: Production runner ----
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 
