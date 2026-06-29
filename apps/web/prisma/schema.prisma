@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  slug      String   @unique
+  icon      String?
+  sounds    Sound[]
+  createdAt DateTime @default(now())
+}
+
+model Sound {
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String   @unique
+  description String?
+  audioUrl    String
+  duration    Float?
+  fileSize    Int?
+  playCount   Int      @default(0)
+  sourceUrl   String?
+  emoji       String?
+  tags        String[]
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([categoryId])
+  @@index([playCount(sort: Desc)])
+  @@index([name])
+}
+
+model ScrapeLog {
+  id          Int       @id @default(autoincrement())
+  status      String    @default("running")
+  soundsFound Int       @default(0)
+  soundsAdded Int       @default(0)
+  soundsSkipped Int     @default(0)
+  page        Int       @default(1)
+  error       String?
+  startedAt   DateTime  @default(now())
+  endedAt     DateTime?
+}
