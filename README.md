@@ -85,7 +85,6 @@ apps/web/
 ## Notes
 
 - `apps/web/.env` holds local credentials and must not be committed.
-- `src/app/CONTEXT.md` is a generated snapshot, not maintained documentation.
 
 ## License
 
