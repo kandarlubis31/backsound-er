@@ -86,6 +86,14 @@ apps/web/
 
 - `apps/web/.env` holds local credentials and must not be committed.
 
+---
+
+## Bahasa Indonesia
+
+**Backsound-er** adalah katalog backsound untuk kebutuhan video dan web yang bisa ditelusuri: suara dikelompokkan per kategori, bisa dicari, diberi tag, dan tetap mencantumkan sumbernya. Scraper bawaan mengisi katalog dan mencatat apa yang ditemukan setiap kali dijalankan.
+
+---
+
 ## License
 
 See the repository root for licensing terms.
