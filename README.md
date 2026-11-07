@@ -23,7 +23,7 @@ Three tables, defined in [`apps/web/prisma/schema.prisma`](apps/web/prisma/schem
 
 - **`Category`** — name, unique slug, optional icon
 - **`Sound`** — name, unique slug, description, `audioUrl`, duration, file size,
- `playCount`, `sourceUrl`, emoji, tags, category relation
+  `playCount`, `sourceUrl`, emoji, tags, category relation
 - **`ScrapeLog`** — status, counts for found/added/skipped, page cursor, error, timings
 
 `Sound` is indexed on `categoryId`, `playCount` (descending), and `name`.
